@@ -1,0 +1,23 @@
+{
+  "name": "create-fias",
+  "version": "0.0.1",
+  "description": "React va Next.js loyihalarini tez yaratish uchun CLI tool. Zamonaviy template, best practices va to'liq customization imkoniyatlari bilan.",
+  "main": "bin/cli.js",
+  "bin": {
+    "create-fias": "./bin/cli.js"
+  },
+  "keywords": [],
+  "author": "Usmonov Azizbek <usmonovazizbek15@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiasuz/create-fias"
+  },
+  "bugs": {
+    "url": "https://github.com/fiasuz/create-fias/issues"
+  },
+  "homepage": "https://github.com/fiasuz/create-fias#readme",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
