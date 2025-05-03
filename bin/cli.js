@@ -25,50 +25,6 @@ if (!projectName) {
   process.exit(1);
 }
 
-function createPrePushHook(targetPath) {
-  const hooksDir = path.join(targetPath, ".git", "hooks");
-  const prePushPath = path.join(hooksDir, "pre-push");
-
-  if (!fs.existsSync(path.join(targetPath, ".git"))) {
-    execSync("git init", { cwd: targetPath });
-  }
-
-  if (!fs.existsSync(hooksDir)) {
-    fs.mkdirSync(hooksDir, { recursive: true });
-  }
-
-  const hookContent = `#!/bin/bash
-
-# git push --no-verify => For pushing without checking
-
-# Project being built
-echo "The project build process has started..."
-
-# NPM build command
-npm run build
-
-# Failed Build will show an error and stop push
-if [ $? -ne 0 ]; then
-  echo "Error: Build failed. Please, correct the errors and try again."
-  exit 1
-fi
-
-# Check for uncommitted changes in Git status
-if [ -n "$(git status --porcelain)" ]; then
-  echo "Error: You need to commit new changes"
-  echo "Please enter 'git commit -m \\"commit message\\" and push again"
-  exit 1
-fi
-
-# Build completed successfully and will be pushed if all changes have been committed
-echo "Build completed successfully. Commit found. Push is continuing..."`;
-
-  fs.writeFileSync(prePushPath, hookContent);
-  fs.chmodSync(prePushPath, "755");
-
-  log.success("Pre-push hook created");
-}
-
 function createGitignore(targetPath) {
   const gitignorePath = path.join(targetPath, ".gitignore");
 
@@ -193,7 +149,6 @@ async function init() {
     cloneTemplate(NEXT_JS_UI, targetPath);
     removeGitFolder(targetPath);
     reinitializeGit(targetPath);
-    createPrePushHook(targetPath);
     clearInterval(copyingLoader);
     createGitignore(targetPath);
     process.stdout.clearLine(0);

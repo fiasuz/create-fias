@@ -1,7 +1,7 @@
 {
   "name": "create-fias",
-  "version": "0.0.1",
-  "description": "React va Next.js loyihalarini tez yaratish uchun CLI tool. Zamonaviy template, best practices va to'liq customization imkoniyatlari bilan.",
+  "version": "0.0.2",
+  "description": "CLI tool for quick creation of React and Next.js projects. With modern templates, best practices, and full customization capabilities.",
   "main": "bin/cli.js",
   "bin": {
     "create-fias": "./bin/cli.js"
