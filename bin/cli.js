@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const NEXT_JS_UI = "https://github.com/fiasuz/fias-ui.git";
+const TEMPLATE_REPO = "https://github.com/fiasuz/fias-ui.git";
 
 const fs = require("fs");
 const path = require("path");
@@ -12,11 +12,22 @@ const {
   cloneTemplate,
   removeGitFolder,
   reinitializeGit,
+  askTemplateType
 } = require("../helpers/fn");
 const log = require("../helpers/colors");
 
 let projectName = process.argv[2];
 let targetPath = projectName ? path.join(process.cwd(), projectName) : null;
+
+// Return branch name based on Template
+function getTemplateBranch(templateType) {
+  return templateType === "next" ? "templ-next" : "templ-react";
+}
+
+// Get template name
+function getTemplateDisplayName(templateType) {
+  return templateType === "next" ? "Next.js" : "React";
+}
 
 // Main function
 async function init() {
@@ -38,18 +49,21 @@ async function init() {
       process.exit(1);
     }
 
+    const templateType = await askTemplateType();
+    const templateBranch = getTemplateBranch(templateType);
+    const templateName = getTemplateDisplayName(templateType);
+
     // Create a new project folder
-    log.info(chalk.bold("Generating FIAS project"));
+    log.info(chalk.bold(`Generating FIAS project with ${templateName} template`));
     fs.mkdirSync(targetPath, { recursive: true });
 
     // Template fayllarni nusxalash
-    cloneTemplate(NEXT_JS_UI, targetPath);
-    log.success("Template created");
+    cloneTemplate(TEMPLATE_REPO, targetPath, templateBranch);
+    log.success(`${templateName} template created`);
+
     removeGitFolder(targetPath);
     reinitializeGit(targetPath);
     log.success("Git initialized");
-    // process.stdout.clearLine(0);
-    // process.stdout.cursorTo(0);
 
     // package.json ni yangilash
     const packageJsonPath = path.join(targetPath, "package.json");
@@ -74,6 +88,7 @@ async function init() {
 
     log.info("\nAbout your project:");
     console.log(`  Project name: ${chalk.cyan(projectName)}`);
+    console.log(`  Template: ${chalk.cyan(templateName)}`);
     console.log(`  Directory: ${chalk.cyan(targetPath)}`);
   } catch (error) {
     log.error("\nAn error occured:");
