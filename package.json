@@ -11,12 +11,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fiasuz/create-fias"
+    "url": "git+https://github.com/fiasuz/fias-ui"
   },
   "bugs": {
-    "url": "https://github.com/fiasuz/create-fias/issues"
+    "url": "https://github.com/fiasuz/fias-ui/issues"
   },
-  "homepage": "https://github.com/fiasuz/create-fias#readme",
+  "homepage": "https://fias.gitbook.io/docs",
   "dependencies": {
     "chalk": "^4.1.2",
     "inquirer": "^8.2.6"
