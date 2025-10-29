@@ -9,7 +9,7 @@
 
 ---
 
-## 📦 Installation
+## Installation
 
 To create a new project, simply run:
 
@@ -21,24 +21,24 @@ You will be prompted to select a project name and template (react or next).
 
 ---
 
-## ✨ Features
+## Features
 
-* ✅ React or Next.js (App Router) templates
-* 🧱 Feature-Sliced Design (FSD) architecture
-* ⚙️ TypeScript support
-* 🎨 Tailwind CSS + Shadcn UI
-* 🌍 Internationalization (i18n)
-* 🌗 Dark/Light theme support
-* 🔄 Data fetching with TanStack Query (React Query)
-* 🧰 Useful hooks: useMobile, useWindowSize, useCloser
-* 🧪 Utility functions: formatDate, formatPhone, formatPrice
-* 🧹 Pre-configured ESLint + Prettier + lint-staged
-* 🛡️ Git hooks via husky (pre-commit & pre-push checks)
-* 🚀 Next.js + Turbopack for lightning-fast builds
+* React or Next.js (App Router) templates
+* Feature-Sliced Design (FSD) architecture
+* TypeScript support
+* Tailwind CSS + Shadcn UI
+* Internationalization (i18n)
+* Dark/Light theme support
+* Data fetching with TanStack Query (React Query)
+* Useful hooks: useMobile, useWindowSize, useCloser
+* Utility functions: formatDate, formatPhone, formatPrice
+* Pre-configured ESLint + Prettier + lint-staged
+* Git hooks via husky (pre-commit & pre-push checks)
+* Next.js + Turbopack for lightning-fast builds
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 For detailed usage instructions and configuration guide, please visit the official documentation:
 
@@ -46,7 +46,7 @@ For detailed usage instructions and configuration guide, please visit the offici
 
 ---
 
-## 🗂️ Repository
+## Repository
 
 Browse the source code or contribute on GitHub:
 
@@ -54,7 +54,7 @@ Browse the source code or contribute on GitHub:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome all contributions! If you'd like to report a bug, suggest a feature, or submit a pull request, please follow our contribution guide:
 
