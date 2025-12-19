@@ -50,7 +50,7 @@ For detailed usage instructions and configuration guide, please visit the offici
 
 Browse the source code or contribute on GitHub:
 
-🔗 [https://github.com/fiasuz/fias-ui](https://github.com/fiasuz/fias-ui)
+[https://github.com/fiasuz/fias-ui](https://github.com/fiasuz/fias-ui)
 
 ---
 
