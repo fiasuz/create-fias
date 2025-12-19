@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/npm/l/create-fias?style=flat-square)](https://github.com/fiasuz/fias-ui/blob/main/LICENSE)
 [![docs](https://img.shields.io/badge/docs-available-brightgreen?style=flat-square)](https://fias.gitbook.io/docs)
 
-🚀 create-fias is a modern project starter for React and Next.js. It comes with TypeScript, Tailwind CSS, Shadcn UI, FSD architecture, ESLint, Prettier, husky, and more — all pre-configured to help you build faster and cleaner apps.
+create-fias is a modern project starter for React and Next.js. It comes with TypeScript, Tailwind CSS, Shadcn UI, FSD architecture, ESLint, Prettier, husky, and more — all pre-configured to help you build faster and cleaner apps.
 
 ---
 
@@ -42,7 +42,7 @@ You will be prompted to select a project name and template (react or next).
 
 For detailed usage instructions and configuration guide, please visit the official documentation:
 
-👉 [https://fias.gitbook.io/docs](https://fias.gitbook.io/docs)
+[https://fias.gitbook.io/docs](https://fias.gitbook.io/docs)
 
 ---
 
@@ -58,4 +58,4 @@ Browse the source code or contribute on GitHub:
 
 We welcome all contributions! If you'd like to report a bug, suggest a feature, or submit a pull request, please follow our contribution guide:
 
-📄 [https://fias.gitbook.io/docs/other/contributing-introduction](https://fias.gitbook.io/docs/other/contributing-introduction)
+[https://fias.gitbook.io/docs/other/contributing-introduction](https://fias.gitbook.io/docs/other/contributing-introduction)
