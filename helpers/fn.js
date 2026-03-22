@@ -17,7 +17,7 @@ function askProjectName() {
       resolve(name.trim());
     });
   });
-}
+};
 
 function initializeGitRepo(targetPath) {
   try {
@@ -25,18 +25,29 @@ function initializeGitRepo(targetPath) {
     execSync('git commit -n -m "init create-fias"', { cwd: targetPath });
   } catch (error) {
     log.warning("There's a problem creating Git commit:" + error.message);
-  }
-}
+  };
+};
 
 function cleanup(targetPath) {
   if (fs.existsSync(targetPath)) {
     fs.rmSync(targetPath, { recursive: true, force: true });
     log.info("The created files have been deleted");
-  }
-}
+  };
+};
 
 function cloneTemplate(repoUrl, targetPath, branch = "templ-next") {
   try {
+    if (branch.includes("github")) {
+      execSync(
+        `git clone ${branch} "${targetPath}"`,
+        {
+          stdio: "inherit",
+        },
+      );
+
+      return;
+    };
+
     execSync(
       `git clone --branch ${branch} --single-branch ${repoUrl} "${targetPath}"`,
       {
@@ -48,7 +59,7 @@ function cloneTemplate(repoUrl, targetPath, branch = "templ-next") {
     console.error(chalk.red(error));
     cleanup(targetPath);
     process.exit(1);
-  }
+  };
 }
 
 function removeGitFolder(targetPath) {
@@ -95,6 +106,11 @@ async function askTemplateType() {
           value: "react",
           short: "React",
         },
+        {
+          name: "Express.js",
+          value: "express",
+          short: "Express"
+        }
       ],
       default: "next",
     },
