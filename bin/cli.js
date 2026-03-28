@@ -3,8 +3,8 @@ const TEMPLATE_REPO = "https://github.com/fiasuz/fias-ui.git";
 
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
 const chalk = require("chalk");
+const { execSync } = require("child_process");
 const {
   askProjectName,
   initializeGitRepo,
@@ -12,7 +12,9 @@ const {
   cloneTemplate,
   removeGitFolder,
   reinitializeGit,
-  askTemplateType
+  askTemplateType,
+  checkForName,
+  createFeatureFolders,
 } = require("../helpers/fn");
 const log = require("../helpers/colors");
 
@@ -21,25 +23,48 @@ let targetPath = projectName ? path.join(process.cwd(), projectName) : null;
 
 // Return branch name based on Template
 function getTemplateBranch(templateType) {
-  return templateType === "next" ? "templ-next" : "templ-react";
-}
+  switch(templateType) {
+    case "next":
+      return "templ-next";
+    case "react":
+      return "templ-react";
+    case "express":
+      return "https://github.com/the-ict/express-template.git";
+    default:
+      return "templ-next";
+  }
+};
 
 // Get template name
 function getTemplateDisplayName(templateType) {
-  return templateType === "next" ? "Next.js" : "React";
-}
+  switch(templateType) {
+    case "react":
+      return "React.js";
+    case "next":
+      return "Next.js";
+    case "express":
+      return "Express.js";
+    default:
+      return "React.js";
+  }
+};
 
 // Main function
 async function init() {
+  if(process.argv.length > 2) {
+    const targetValue = checkForName(process.argv); // returns the value of -f argugent if it exists
+    createFeatureFolders(targetValue);
+    return;
+  }
+
   try {
     if (!projectName) {
       projectName = await askProjectName();
-
       if (!projectName) {
         log.error("Project name is required!");
         process.exit(1);
-      }
-    }
+      };
+    };
 
     targetPath = path.join(process.cwd(), projectName);
 
@@ -47,7 +72,7 @@ async function init() {
     if (fs.existsSync(targetPath)) {
       log.error(`Folder "${projectName}" already exists`);
       process.exit(1);
-    }
+    };
 
     const templateType = await askTemplateType();
     const templateBranch = getTemplateBranch(templateType);
